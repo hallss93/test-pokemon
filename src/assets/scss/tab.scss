@@ -1,0 +1,313 @@
+/*
+  This Tab component has been modified from an existing component:
+  https://tympanus.net/Development/TabStylesInspiration/
+*/
+
+.poke-body {
+  &:hover {
+    svg:nth-child(2) {
+      background: linear-gradient(
+        0deg,
+        rgba(242, 242, 242, 1) 0%,
+        rgba(235, 235, 235, 1) 35%,
+        rgba(251, 251, 251, 1) 100%
+      );
+    }
+    span:nth-child(2) {
+      background: linear-gradient(
+        0deg,
+        rgba(242, 242, 242, 1) 0%,
+        rgba(235, 235, 235, 1) 35%,
+        rgba(251, 251, 251, 1) 100%
+      );
+    }
+  }
+  .tabs-style-shape {
+    max-width: 1200px;
+
+    nav ul li {
+      margin: 0 3em;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &.tab-current {
+        z-index: 100;
+      }
+
+      a {
+        overflow: visible;
+        margin: 0 -3em 0 0;
+        padding: 0;
+        color: #fff;
+        font-weight: 500;
+
+        svg {
+          pointer-events: none !important;
+          position: absolute;
+          left: 100%;
+          margin: 0;
+          width: 3em;
+          height: 100%;
+          fill: #efefef;
+
+          &:nth-child(2) {
+            right: 100%;
+            left: auto;
+            -webkit-transform: scale3d(-1, 1, 1);
+            transform: scale3d(-1, 1, 1);
+            background-color: #e6e5e6;
+          }
+
+          use {
+            pointer-events: auto;
+          }
+        }
+
+        span {
+          display: block;
+          overflow: hidden;
+          padding: 0.65em 0;
+          background-color: #efefef;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+
+          &:nth-child(2) {
+            background-color: #e6e5e6;
+          }
+        }
+      }
+
+      &:first-child a span {
+        padding-left: 2em;
+        border-radius: 30px 0 0 0;
+      }
+
+      &:last-child a span {
+        padding-right: 2em;
+        border-radius: 0 30px 0 0;
+      }
+
+      &:last-child a svg {
+        right: 100%;
+        left: auto;
+        -webkit-transform: scale3d(-1, 1, 1);
+        transform: scale3d(-1, 1, 1);
+      }
+    }
+  }
+
+  .tabs-style-shape nav li.tab-current a span,
+  .tabs-style-shape nav li.tab-current a svg {
+    -webkit-transition: none;
+    transition: none;
+  }
+
+  .tabs-style-shape nav li a span {
+    min-height: 60px;
+  }
+  .tabs-style-shape nav li.tab-current a span {
+    background: #fff;
+  }
+
+  .tabs-style-shape nav li.tab-current a svg {
+    fill: #fff;
+  }
+
+  .tabs-style-shape .content-wrap {
+    background: #fff;
+  }
+  .content-wrap {
+    height: 124px;
+  }
+
+  @media screen and (max-width: 58em) {
+    .tabs-style-shape nav ul {
+      display: block;
+      padding-top: 1.5em;
+    }
+    .tabs-style-shape nav ul li {
+      display: block;
+      margin: -1.25em 0 0;
+      -webkit-flex: none;
+      flex: none;
+    }
+    .tabs-style-shape nav ul li a {
+      margin: 0;
+    }
+    .tabs-style-shape nav ul li svg {
+      display: none;
+    }
+    .tabs-style-shape nav ul li a span {
+      padding: 1.25em 0 2em !important;
+      border-radius: 30px 30px 0 0 !important;
+      box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.1);
+      line-height: 1;
+    }
+    .tabs-style-shape nav ul li:last-child a span {
+      padding: 1.25em 0 !important;
+    }
+    .tabs-style-shape nav ul li.tab-current {
+      z-index: 1;
+    }
+  }
+
+  .tabs {
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 100%;
+    font-weight: 300;
+    font-size: 1.25em;
+
+    nav {
+      text-align: center;
+
+      ul {
+        position: relative;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: flex;
+        margin: 0 auto;
+        padding: 0;
+        max-width: 100%;
+        margin-left: -23px;
+        list-style: none;
+        -ms-box-orient: horizontal;
+        -ms-box-pack: center;
+        -webkit-flex-flow: row wrap;
+        -moz-flex-flow: row wrap;
+        -ms-flex-flow: row wrap;
+        flex-flow: row wrap;
+        -webkit-justify-content: center;
+        -moz-justify-content: center;
+        -ms-justify-content: center;
+        justify-content: center;
+
+        li {
+          position: relative;
+          z-index: 1;
+          display: block;
+          margin: 0;
+          text-align: center;
+          -webkit-flex: 1;
+          -moz-flex: 1;
+          -ms-flex: 1;
+          flex: 1;
+
+          &.tab-current a {
+            color: #74777b;
+          }
+        }
+      }
+
+      a {
+        position: relative;
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        line-height: 2.5;
+
+        span {
+          vertical-align: middle;
+          font-size: 0.75em;
+        }
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .content-wrap {
+    position: relative;
+    section {
+      display: none;
+      margin: 0 auto;
+      padding: 1em;
+      max-width: 1200px;
+      text-align: left;
+
+      &.content-current {
+        display: block;
+      }
+    }
+  }
+
+  @media screen and (max-width: 58em) {
+    .tabs nav a:before {
+      margin-right: 0;
+    }
+  }
+  nav,
+  section {
+    display: block;
+  }
+  html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    margin: 0;
+  }
+  a:focus {
+    outline: thin dotted;
+  }
+  a:active,
+  a:hover {
+    outline: 0;
+  }
+  svg:not(:root) {
+    overflow: hidden;
+  }
+
+  *,
+  *:after,
+  *:before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  body {
+    background: white;
+    color: #74777b;
+    font-weight: 400;
+    font-size: 1em;
+    font-family: "Raleway", Arial, sans-serif;
+  }
+
+  a {
+    color: #2cc185;
+    text-decoration: none;
+    outline: none;
+  }
+
+  a:hover,
+  a:focus {
+    color: #74777b;
+  }
+  h4 {
+    margin: 0px;
+  }
+  .poke-power {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    span {
+      margin: 3px;
+      padding: 3px 8px;
+      font-size: 13px;
+      border-radius: 8px;
+      &.green {
+        background: #9bcb50;
+        color: black;
+      }
+    }
+  }
+}
